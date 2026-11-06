@@ -19,12 +19,19 @@ objpoints = [] # 3d points in real world space
 imgpoints = [] # 2d points in image plane.
 
 # Make a list of calibration images
-images = glob.glob('data/*.jpg')
+images = sorted(glob.glob('data/*.jpg'))
 
 # Step through the list and search for chessboard corners
 print('Start finding chessboard corners...')
 for idx, fname in enumerate(images):
     img = cv2.imread(fname)
+
+    # 0003 and 0008 are landscape, the rest are portrait.
+    # One K can't fit both orientations, so use portrait only.
+    if img.shape[0] < img.shape[1]:
+        print('skip landscape image', fname)
+        continue
+
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     # Find the chessboard corners
@@ -216,7 +223,8 @@ cam_width = 0.064/0.1
 cam_height = 0.032/0.1
 scale_focal = 1600
 # chess board setting
-board_width = 8
+# 7x7 corners span 6x6 squares
+board_width = 6
 board_height = 6
 square_size = 1
 # display

@@ -150,7 +150,8 @@ ax = fig.add_subplot(111, projection='3d')
 cam_width = 0.064 / 0.1
 cam_height = 0.032 / 0.1
 scale_focal = 1600
-board_width = 8
+# 7x7 corners span 6x6 squares
+board_width = 6
 board_height = 6
 square_size = 1
 

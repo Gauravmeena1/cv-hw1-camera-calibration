@@ -33,8 +33,10 @@ Each script prints K and the mean reprojection error, then saves a 3D plot of th
 
 | Dataset | Images used | fx | fy | cx | cy | Error (px) |
 |---|---|---|---|---|---|---|
-| TA images | 10 / 10 | 3389.37 | 3340.26 | 1478.33 | 1419.91 | 19.74 |
+| TA images | 8 / 10 | 3015.08 | 3008.33 | 1470.25 | 1893.73 | 3.78 |
 | Phone images | 8 / 10 | 2905.41 | 2936.06 | 853.31 | 1573.69 | 9.29 |
+
+`data/0003.jpg` and `data/0008.jpg` are landscape and the other TA images are portrait. One K can't fit both orientations, so these two are skipped.
 
 No corners are found in `my_data/00.jpg` and `my_data/06.jpg`, so these two are skipped.
 
